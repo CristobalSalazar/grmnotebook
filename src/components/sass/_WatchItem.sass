@@ -1,0 +1,22 @@
+$watchItemTransition: 0.175s
+.WatchItem
+  user-select: none
+  width: 100%
+  padding: 12px
+  cursor: pointer
+  transition: background-color $watchItemTransition, color $watchItemTransition,transform $watchItemTransition, color $watchItemTransition
+  border-radius: 10px
+  color: gray
+  &:nth-child(1)
+    margin-top: 12px
+  &:hover 
+    background-color: darken($primary, 15%)
+    color: white
+    transform: scale(1.075)
+    box-shadow: 0 0 6px #222
+  #delete
+    color: $danger
+    float: right
+    font-weight: 700
+    &:hover
+      transform: scale(1.5)
