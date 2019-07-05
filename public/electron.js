@@ -1,4 +1,8 @@
-const { app, BrowserWindow, dialog } = require("electron");
+const {
+  app,
+  BrowserWindow,
+  dialog
+} = require("electron");
 const notifications = require("./electron/notifications");
 // Check for development environment
 const isDev = require("electron-is-dev");
@@ -21,12 +25,12 @@ function createWindow() {
     isDev ? "http://localhost:3000" : `file://${path.join(__dirname, "../build/index.html")}`
   );
 
-  mainWindow.on("closed", function() {
+  mainWindow.on("closed", function () {
     mainWindow = null;
   });
 }
 
-app.on("ready", function() {
+app.on("ready", function () {
   createWindow();
   notifications.showNotification("Welcome to Reactron");
   console.log("Electron ready");
@@ -35,20 +39,17 @@ app.on("ready", function() {
   //   path.join(__dirname, "/../extensions/react3.6.0_0")
   // );
 });
-app.on("window-all-closed", function() {
+app.on("window-all-closed", function () {
   if (process.platform !== "darwin") {
     app.quit();
   }
 });
-app.on("activate", function() {
+app.on("activate", function () {
   if (mainWindow === null) {
     console.log("app reactivated");
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
 
 const eventListener = require("./electron/mainEventListener");
 

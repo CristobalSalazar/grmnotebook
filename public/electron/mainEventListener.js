@@ -1,4 +1,7 @@
-const { ipcMain, shell } = require("electron");
+const {
+  ipcMain,
+  shell
+} = require("electron");
 const fs = require("fs");
 const path = require("path");
 const IEX = require("../../src/IEX");
@@ -6,7 +9,7 @@ var watchList = require("../data/WatchList.json");
 const symbolsData = require("../data/Symbols.json");
 
 module.exports = {
-  init: function() {
+  init: function () {
     // --- Debug ---
     ipcMain.on("m/log", (e, message) => {
       console.log(message);
@@ -26,7 +29,9 @@ module.exports = {
             }
             fs.writeFile(
               path.join(__dirname, "../data/Symbols.json"),
-              JSON.stringify({ symbols: symbols }),
+              JSON.stringify({
+                symbols: symbols
+              }),
               err => {
                 if (err) {
                   console.error(err);

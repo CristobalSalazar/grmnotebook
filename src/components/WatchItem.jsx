@@ -13,6 +13,8 @@ export default function WatchItem(props) {
         }}
       />
       {props.name}
+
+
       <span id="delete" onClick={e => props.onDelete(e, props.name)}>
         x
       </span>
