@@ -25,7 +25,13 @@ export default class Aside extends Component {
     return (
       <div className="Aside">
         <Sidebar setDrawer={this.setDrawer} />
-        <SideDrawer getWatchItem={this.props.getWatchItem} display={display} title={selected} />
+        <SideDrawer
+          iex={this.props.iex}
+          profile={this.props.profile}
+          getWatchItem={this.props.getWatchItem}
+          display={display}
+          title={selected}
+        />
       </div>
     );
   }

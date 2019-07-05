@@ -1,13 +1,9 @@
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
 import "../sass/style.css";
 import Aside from "./Aside";
 import Main from "./Main";
 import IEX from "../IEX";
-const {
-  ipcRenderer
-} = window.electron;
+const { ipcRenderer } = window.electron;
 
 export default class App extends Component {
   constructor(props) {
@@ -21,7 +17,7 @@ export default class App extends Component {
     ipcRenderer.send("m/appDidMount");
     ipcRenderer.send("m/symbols");
     ipcRenderer.on("r/symbols", (e, data) => {
-      console.log(data);
+      this.setState({ symbols: data.symbols });
     });
   }
   iex = {};
@@ -32,27 +28,13 @@ export default class App extends Component {
     });
   };
   render() {
-    return ( <
-      div className = "App" >
-      <
-      div className = "Window" >
-      <
-      Aside getWatchItem = {
-        this.getWatchItem
-      }
-      /> <
-      Main iex = {
-        this.iex
-      }
-      companyName = {
-        this.state.companyName
-      }
-      profile = {
-        this.state.profile
-      }
-      /> < /
-      div > <
-      /div>
+    return (
+      <div className="App">
+        <div className="Window">
+          <Aside iex={this.iex} profile={this.state.profile} getWatchItem={this.getWatchItem} />
+          <Main iex={this.iex} profile={this.state.profile} />{" "}
+        </div>
+      </div>
     );
   }
 }

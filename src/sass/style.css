@@ -124,6 +124,7 @@ p {
   -webkit-box-shadow: 0 0 12px black;
           box-shadow: 0 0 12px black;
   z-index: 1;
+  background: #111;
 }
 
 .Header {
@@ -196,7 +197,7 @@ p {
   color: white;
   text-align: left;
   font-size: 32px;
-  margin: 24px 32px;
+  margin: 24px 0;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -216,7 +217,23 @@ p {
       grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 0 32px;
+  margin: 0;
+}
+
+.News {
+  overflow: hidden;
+}
+
+.News .Article {
+  font-size: 10px;
+}
+
+.Resizer {
+  cursor: col-resize;
+  width: 5px;
+  color: none;
+  background: none;
+  opacity: 0;
 }
 
 header {
