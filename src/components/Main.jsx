@@ -8,7 +8,7 @@ export default class Main extends Component {
     return (
       <div className="Main">
         <Title iex={this.props.iex} profile={this.props.profile} />
-        <Dashboard profile={this.props.profile} />
+        <Dashboard iex={this.props.iex} profile={this.props.profile} />
       </div>
     );
   }

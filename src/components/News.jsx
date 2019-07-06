@@ -1,19 +1,14 @@
 import React, { Component } from "react";
-import WatchItem from "./WatchItem";
-import { statement } from "@babel/template";
-const ipcr = window.electron.ipcRenderer;
 
 export default class News extends Component {
   componentDidMount() {
     this.props.iex.stock.news(this.props.profile).then(data => {
-      console.log(data);
       this.setState({ articles: data });
     });
   }
   componentDidUpdate(prevProps) {
-    if (this.props.profile != prevProps.profile) {
+    if (this.props.profile !== prevProps.profile) {
       this.props.iex.stock.news(this.props.profile).then(data => {
-        console.log(data);
         this.setState({ articles: data });
       });
     }
@@ -21,7 +16,6 @@ export default class News extends Component {
   state = {
     articles: []
   };
-  getData = profile => {};
   render() {
     return (
       <div className="News">

@@ -13,7 +13,6 @@ export default class Title extends Component {
   }
   getData(profile) {
     this.props.iex.stock.company(profile).then(data => {
-      console.log(data);
       this.setState({
         companyName: data.companyName,
         ceo: data.ceo,

@@ -3,9 +3,9 @@ const axios = require("axios");
 module.exports = class IEX {
   constructor(token, testMode = false) {
     this.token = token;
-    this.baseURL = testMode
-      ? "https://sandbox.iexapis.com/stable"
-      : "https://cloud.iexapis.com/stable";
+    this.baseURL = testMode ?
+      "https://sandbox.iexapis.com/stable" :
+      "https://cloud.iexapis.com/stable";
   }
   getData(branch, symbol, endpoint, params) {
     if (!this.token) {
@@ -95,6 +95,9 @@ module.exports = class IEX {
     },
     fundOwnership: (symbol, params) => {
       return this.getData(this.stock.branch, symbol, `fund-ownership`, params);
+    },
+    historicalPrices: (symbol, range) => {
+      return this.getData(this.stock.branch, symbol, `chart/${range}`);
     },
     income: (symbol, params) => {
       return this.getData(this.stock.branch, symbol, `income`, params);
