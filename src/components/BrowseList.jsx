@@ -14,6 +14,38 @@ export default class BrowseList extends Component {
     ipcr.send("m/symbols");
     ipcr.on("r/symbols", this.updateList);
   }
+  searchResult = () => {
+    return <div />
+  }
+  search = e => {
+
+    var results = []
+    var query = e.target.value;
+    var symbols = this.state.symbols;
+
+    for (let i = 0; i < query.length; i++) {
+      let currentCharacter = query[i].toUpperCase();
+      let middle = Math.floor(symbols.length / 2);
+      let searchChar = symbols[middle][i];
+
+      //Binary search algorithm
+      while (searchChar !== currentCharacter) {
+        // higher in the alphabet
+        if (searchChar > currentCharacter) {
+
+        }
+        // lower in the alphabet
+        else if (searchChar < currentCharacter) {
+
+        }
+        // if equal add to results and break
+        else {
+
+          break;
+        }
+      }
+    }
+  }
   componentWillUnmount() {
     ipcr.removeListener("r/symbols", this.updateList);
   }
@@ -24,12 +56,8 @@ export default class BrowseList extends Component {
   render() {
     return (
       <div>
-        <input className="text-input" type="text" placeholder="Search symbols..." />
-        {this.state.symbols.map((val, i) => {
-          if (i < 100) {
-            return <WatchItem key={i} getWatchItem={this.props.getWatchItem} name={val} />;
-          }
-        })}
+        <input className="text-input" onKeyUp={this.search} type="text" placeholder="Search symbols..." />
+
       </div>
     );
   }

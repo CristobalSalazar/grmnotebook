@@ -6,7 +6,7 @@ export default class SampleChart extends Component {
   state = {
     options: new ChartOptions().bar,
     series: [{
-      name: "Close",
+      name: "",
       data: []
     }]
   }
@@ -20,15 +20,19 @@ export default class SampleChart extends Component {
   }
   getData() {
     let options = new ChartOptions().bar
-    options.title.text = "5 Day Close Price";
-    options.tooltip.style = {
-      background: 'black'
-    }
-    let series = [{ name: "Close", data: [] }]
+    let series = [{ name: "Close", data: [] }, { name: "Open", data: [] }]
+
+    options.title.text = "5 Day Prices";
+    this.props.iex.stock.quote(this.props.profile).then(data => {
+      console.log(data);
+    })
     this.props.iex.stock.historicalPrices(this.props.profile, '5d').then(data => {
+      console.log(data);
       for (let d of data) {
         options.xaxis.categories.push(d.label)
         series[0].data.push(d.close);
+        series[1].data.push(d.open);
+
       }
       this.setState({ options, series })
     });
@@ -40,7 +44,7 @@ export default class SampleChart extends Component {
           className="Chart"
           options={this.state.options}
           series={this.state.series}
-          type="bar"
+          type="line"
           width="500"
         />
       </div>

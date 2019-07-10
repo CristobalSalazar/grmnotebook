@@ -11,7 +11,6 @@ export default class Resizer extends Component {
   }
   handleStartDrag = () => {
     this.startX = this.mouseX;
-    console.log(this.startX);
   };
   handleDrag = e => {
     const aside = document.querySelector("aside");
