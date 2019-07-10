@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import ChartOptions from '../ChartOptions'
+import ChartOptions from "../ChartOptions";
 
 export default class SampleChart extends Component {
   state = {
     options: new ChartOptions().bar,
-    series: [{
-      name: "",
-      data: []
-    }]
-  }
+    series: [
+      {
+        name: "",
+        data: []
+      }
+    ]
+  };
   componentDidMount() {
     this.getData();
   }
@@ -19,22 +21,26 @@ export default class SampleChart extends Component {
     }
   }
   getData() {
-    let options = new ChartOptions().bar
-    let series = [{ name: "Close", data: [] }, { name: "Open", data: [] }]
+    let options = new ChartOptions().bar;
+    let series = [
+      { name: "High", data: [] },
+      { name: "Low", data: [] },
+      { name: "Average  ", data: [] }
+    ];
 
-    options.title.text = "5 Day Prices";
+    options.title.text = "High/Low";
+    options.subtitle.text = "5 Days";
     this.props.iex.stock.quote(this.props.profile).then(data => {
       console.log(data);
-    })
-    this.props.iex.stock.historicalPrices(this.props.profile, '5d').then(data => {
+    });
+    this.props.iex.stock.historicalPrices(this.props.profile, "5d").then(data => {
       console.log(data);
-      for (let d of data) {
-        options.xaxis.categories.push(d.label)
-        series[0].data.push(d.close);
-        series[1].data.push(d.open);
-
+      for (let item of data) {
+        series[0].data.push({ x: item.label, y: item.high });
+        series[1].data.push({ x: item.label, y: item.low });
+        series[2].data.push({ x: item.label, y: (item.high + item.low) / 2 });
       }
-      this.setState({ options, series })
+      this.setState({ options, series });
     });
   }
   render() {

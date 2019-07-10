@@ -1,13 +1,8 @@
-module.exports = function () {
+module.exports = function() {
   this.bar = {
-    grid: {
-      borderColor: "#444",
-      row: {
-        opacity: 0.01
-      }
-    },
+    // --- TITLE ---
     title: {
-      text: "Sample Chart",
+      text: "",
       align: "left",
       margin: 10,
       offsetX: 0,
@@ -15,43 +10,85 @@ module.exports = function () {
       floating: false,
       style: {
         fontSize: "24px",
-        color: "#fff"
+        color: "#f1f1f1",
+        fontFamily: "monospace"
       }
     },
+    // --- SUBTITLE ---
+    subtitle: {
+      text: "",
+      align: "right",
+      margin: 0,
+      offsetX: 0,
+      offsetY: 0,
+      floating: false,
+      style: {
+        fontSize: "14px",
+        color: "#9699a2"
+      }
+    },
+    // --- GRID ---
+    grid: {
+      show: true,
+      borderColor: "#444",
+      strokeDashArray: 0,
+      position: "back",
+      xaxis: {
+        lines: {
+          show: true
+        }
+      },
+      yaxis: {
+        lines: {
+          show: true
+        }
+      },
+      row: {
+        colors: undefined,
+        opacity: 0.5
+      },
+      column: {
+        colors: undefined,
+        opacity: 0.5
+      }
+    },
+    // --- TOOLTIP ---
     tooltip: {
       enabled: true,
       shared: true,
       intersect: false,
       followCursor: false,
       fillSeriesColor: false,
-      theme: 'dark',
+      theme: "dark",
       style: {
-        fontSize: '12px',
+        fontSize: "12px",
+        fontFamily: "monospace"
       },
       onDatasetHover: {
-        highlightDataSeries: true,
+        highlightDataSeries: true
       },
       x: {
-        show: true,
+        show: true
       },
       marker: {
-        show: true,
+        show: true
       },
       items: {
-        display: 'flex',
+        display: "flex"
       },
       fixed: {
         enabled: false,
-        position: 'topRight',
+        position: "topRight",
         offsetX: 0,
-        offsetY: 0,
-      },
+        offsetY: 0
+      }
     },
+    // --- MARKERS ---
     markers: {
       size: 5,
-      strokeColors: '#fff',
+      strokeColors: "#fff",
       strokeWidth: 0,
-      strokeOpacity: 0.9,
+      strokeOpacity: 0,
       fillOpacity: 1,
       discrete: [],
       shape: "circle",
@@ -63,74 +100,99 @@ module.exports = function () {
         sizeOffset: 1.666
       }
     },
+    /// --- CHART ---
     chart: {
       toolbar: {
         show: false
       },
+      dropShadow: {
+        enabled: true,
+        top: 0,
+        left: 0,
+        blur: 3,
+        color: "#000",
+        opacity: 0.5
+      },
       animations: {
         enabled: false,
-        easing: 'easeinout',
-        speed: 800,
+        easing: "easeinout",
+        speed: 200,
         animateGradually: {
-          enabled: true,
-          delay: 150
+          enabled: false,
+          delay: 0
         },
         dynamicAnimation: {
           enabled: false,
-          speed: 350
+          speed: 200
         }
       }
     },
+    // --- STROKE ---
     stroke: {
       show: true,
-      curve: 'straight',
-      lineCap: 'butt',
+      curve: "straight",
+      lineCap: "butt",
       colors: undefined,
-      width: 3,
-      dashArray: 0,
+      width: 1,
+      dashArray: 0
     },
+    // --- XAXIS ---
     xaxis: {
-      type: "date",
       categories: [],
-      axisBorder: {
-        show: true
-      },
       labels: {
         style: {
-          colors: "#f1f1f1"
+          colors: "#f1f1f1",
+          fontSize: "14px",
+          fontFamily: "monospace"
+        }
+      },
+      tooltip: {
+        style: {
+          fontFamily: "monospace",
+          fontSize: "14px"
+        }
+      },
+      axisBorder: {
+        show: false
+      },
+      tickPlacement: "on"
+    },
+    // -- YAXIS ---
+    yaxis: {
+      show: true,
+      labels: {
+        formatter: function(val) {
+          if (val) {
+            return "$" + val.toFixed(2);
+          }
+        },
+        style: {
+          color: "#f1f1f1",
+          fontSize: "14px",
+          fontFamily: "monospace"
         }
       }
     },
+    // --- LEGEND ---
     legend: {
       show: true,
       showForSingleSeries: false,
       showForNullSeries: true,
       showForZeroSeries: true,
-      position: 'bottom',
-      horizontalAlign: 'center',
+      position: "top",
+      horizontalAlign: "right",
       floating: false,
-      fontSize: '12px',
-      fontFamily: 'Helvetica, Arial',
+      fontSize: "16px",
+      fontFamily: "monospace",
       width: undefined,
       height: undefined,
       formatter: undefined,
       offsetX: 0,
-      offsetY: -12,
+      offsetY: -24,
       labels: {
-        colors: ['#e1e1e1'],
-        useSeriesColors: false
-      },
-    },
-    yaxis: {
-      show: true,
-      labels: {
-        formatter: function (val) {
-          return '$' + val.toFixed(2)
-        },
-        style: {
-          color: "#f1f1f1"
-        }
+        colors: ["#e1e1e1"],
+        useSeriesColors: true
       }
     }
-  }
-}
+  };
+};

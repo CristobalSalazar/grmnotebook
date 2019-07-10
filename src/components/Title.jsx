@@ -33,22 +33,23 @@ export default class Title extends Component {
     return (
       <div>
         <header className="Title">
-          <h1 style={{ color: '#428bca' }}>{this.state.symbol}</h1>
+          <h1 style={{ color: "#428bca" }}>{this.state.symbol}</h1>
           <br />
           <p> {this.state.companyName}</p>
         </header>
         <div style={this.descStyle}>
-          <p><small>{this.state.description}</small></p>
+          <p style={{ color: "gray" }}>Exchange: {this.state.exchange}</p>
+          <p style={{ color: "gray" }}>Industry: {this.state.industry}</p>
           <br />
-          <p style={{ color: 'gray' }}>Exchange: {this.state.exchange}</p>
-          <br />
-          <p style={{ color: 'gray' }}>Industry: {this.state.industry}</p>
+          <p>
+            <small>{this.state.description}</small>
+          </p>
         </div>
-      </div >
+      </div>
     );
   }
   descStyle = {
-    padding: '12px',
-    fontSize: '14px'
-  }
+    padding: "12px",
+    fontSize: "14px"
+  };
 }

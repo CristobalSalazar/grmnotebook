@@ -8,16 +8,21 @@ import Quote from "./Quote";
 
 export default function Dashboard(props) {
   return (
-    <div className="Dashboard">
-      <Quote iex={props.iex} profile={props.profile} />
-      <SampleChart iex={props.iex} profile={props.profile} />
-      <SampleChart2 />
-      <SampleChart3 />
-      <SampleChart4 />
-      <SampleData />
-      <SampleData />
-      <SampleChart2 />
-      <SampleChart2 />
+    <div>
+      <br />
+      <br />
+      <br />
+      <div className="Dashboard">
+        <Quote iex={props.iex} profile={props.profile} />
+        <SampleChart iex={props.iex} profile={props.profile} />
+        <SampleChart2 />
+        <SampleChart3 />
+        <SampleChart4 />
+        <SampleData />
+        <SampleData />
+        <SampleChart2 />
+        <SampleChart2 />
+      </div>
     </div>
   );
 }

@@ -42,10 +42,6 @@ p {
   color: black;
 }
 
-* {
-  color: white;
-}
-
 .Sidebar {
   height: 100%;
   z-index: 2;
@@ -101,7 +97,7 @@ p {
   overflow-x: none;
   background: -webkit-gradient(linear, left top, left bottom, from(#111), to(black));
   background: linear-gradient(#111, black);
-  scrollbar-color: red red;
+  color: whitesmoke;
 }
 
 .SideDrawer {
@@ -125,6 +121,10 @@ p {
           box-shadow: 0 0 12px black;
   z-index: 1;
   background: #111;
+}
+
+.apexcharts-canvas {
+  background: '#000';
 }
 
 .Header {
