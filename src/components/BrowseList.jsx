@@ -15,7 +15,6 @@ export default class BrowseList extends Component {
     ipcr.send("m/symbols");
     ipcr.on("r/symbols", this.updateList);
   }
-
   search = event => {
     var query = event.target.value.toString().toUpperCase();
     var data = this.state.symbols;
@@ -40,7 +39,6 @@ export default class BrowseList extends Component {
       } else {
         searchChar = query[i];
       }
-      console.log("searching for " + searchChar);
       // Set start and end points around data array
       while (true) {
         iterationCount++;
@@ -64,8 +62,6 @@ export default class BrowseList extends Component {
         } else {
           dataChar = data[current][data[current].length - 1].toUpperCase();
         }
-        console.log("found " + dataChar);
-
         if (searchChar < dataChar) {
           end = current;
         } else if (searchChar > dataChar) {
@@ -78,28 +74,20 @@ export default class BrowseList extends Component {
           dataChar = data[current][data[current].length];
         }
         if (dataChar === searchChar) {
-          console.log("found match");
-
           start = current;
           end = current;
           while (start >= 0 && data[start][i] === searchChar) {
-            console.log("moving start");
             start--;
           }
           start++;
-          console.log("start is now " + data[start]);
           while (end < data.length && data[end][i] === searchChar) {
-            console.log("moving end");
             end++;
           }
           end--;
-          console.log("end is now " + data[end]);
           break; // to next iteration of for loop
         }
       }
     }
-    console.log("start at end is " + start);
-    console.log("end at end is " + end);
     var results = [];
     for (let i = start; i <= end; i++) {
       results.push(data[i]);

@@ -15,13 +15,12 @@ export default function Dashboard(props) {
       <div className="Dashboard">
         <Quote iex={props.iex} profile={props.profile} />
         <SampleChart iex={props.iex} profile={props.profile} />
-        <SampleChart2 />
+        <SampleChart2 iex={props.iex} profile={props.profile} />
+
         <SampleChart3 />
         <SampleChart4 />
         <SampleData />
         <SampleData />
-        <SampleChart2 />
-        <SampleChart2 />
       </div>
     </div>
   );
