@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TitleQuote from './TitleQuote'
 
 export default class Title extends Component {
   constructor(props) {
@@ -34,10 +35,11 @@ export default class Title extends Component {
       <div>
         <header className="Title">
           <h1 style={{ color: "#428bca" }}>{this.state.symbol}</h1>
-          <br />
           <p> {this.state.companyName}</p>
         </header>
+        <TitleQuote profile={this.props.profile} iex={this.props.iex} />
         <div style={this.descStyle}>
+          <br></br>
           <p style={{ color: "gray" }}>Exchange: {this.state.exchange}</p>
           <p style={{ color: "gray" }}>Industry: {this.state.industry}</p>
           <br />

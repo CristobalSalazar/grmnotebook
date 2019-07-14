@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function () {
   this.bar = {
     // --- TITLE ---
     title: {
@@ -9,9 +9,9 @@ module.exports = function() {
       offsetY: 0,
       floating: false,
       style: {
-        fontSize: "24px",
-        color: "#f1f1f1",
-        fontFamily: "monospace"
+        fontFamily: 'Tahoma',
+        fontSize: '32px',
+        color: '#428bca'
       }
     },
     // --- SUBTITLE ---
@@ -24,13 +24,13 @@ module.exports = function() {
       floating: false,
       style: {
         fontSize: "14px",
-        color: "#9699a2"
+        color: "#aaa"
       }
     },
     // --- GRID ---
     grid: {
       show: true,
-      borderColor: "#444",
+      borderColor: "#333",
       strokeDashArray: 0,
       position: "back",
       xaxis: {
@@ -44,12 +44,10 @@ module.exports = function() {
         }
       },
       row: {
-        colors: undefined,
-        opacity: 0.5
+        opacity: 0
       },
       column: {
-        colors: undefined,
-        opacity: 0.5
+        opacity: 0
       }
     },
     // --- TOOLTIP ---
@@ -155,13 +153,21 @@ module.exports = function() {
       axisBorder: {
         show: false
       },
-      tickPlacement: "on"
+      tickPlacement: "on",
+      axisTicks: {
+        show: true,
+        borderType: 'solid',
+        color: '#fff',
+        height: 3,
+        offsetX: 0,
+        offsetY: 1
+      },
     },
     // -- YAXIS ---
     yaxis: {
       show: true,
       labels: {
-        formatter: function(val) {
+        formatter: function (val) {
           if (val) {
             return "$" + val.toFixed(2);
           }

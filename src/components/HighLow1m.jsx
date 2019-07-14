@@ -30,11 +30,10 @@ export default class SampleChart extends Component {
 
     options.title.text = "High/Low";
     options.subtitle.text = "1 Month";
-    this.props.iex.stock.quote(this.props.profile).then(data => {
-      console.log(data);
-    });
+    options.xaxis.labels.rotate = -45;
+
     this.props.iex.stock.historicalPrices(this.props.profile, "1m").then(data => {
-      console.log(data);
+      console.log(data)
       for (let item of data) {
         series[0].data.push({ x: item.label, y: item.high });
         series[1].data.push({ x: item.label, y: item.low });

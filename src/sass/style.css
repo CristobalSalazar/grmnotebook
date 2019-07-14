@@ -129,19 +129,12 @@ p {
   grid-column: 1 / span 2;
 }
 
-.Header {
+header {
   width: 100%;
   z-index: 3;
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
-  background: black;
-  color: white;
-}
-
-.Header p {
-  padding: 12px;
-  font-size: 18px;
 }
 
 .SampleData {
@@ -238,6 +231,39 @@ p {
   opacity: 0;
 }
 
+.TitleQuote {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  font-size: 32px;
+}
+
+.Login {
+  background: #111;
+  height: 100%;
+  width: 100%;
+  color: white;
+  text-align: center;
+  margin: auto;
+}
+
+.Login * {
+  margin: auto;
+  margin-bottom: 12px;
+  width: 25%;
+}
+
+.Login #spacer {
+  padding-top: 20%;
+}
+
+.Login input {
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
 header {
   text-align: center;
 }
+/*# sourceMappingURL=style.css.map */

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export default class Quote extends Component {
+export default class TitleQuote extends Component {
   componentDidMount() {
     this.getData();
   }
@@ -24,8 +24,8 @@ export default class Quote extends Component {
   };
   showData() {
     const { changePercent, latestPrice, change, latestSource } = this.state.data;
-    const pos = { color: "#5cb85c" };
-    const neg = { color: "#cc3333" };
+    const pos = { color: "#5cb85c", marginRight: '12px' };
+    const neg = { color: "#cc3333", marginRight: '12px' };
     let choice;
     if (changePercent > 0) {
       choice = pos;
@@ -34,26 +34,14 @@ export default class Quote extends Component {
     }
     if (this.state.data) {
       return (
-        <div>
-          <p>Latest {latestSource} Price</p>
-
-          <h1>
-            <small>$ </small>
+        <div className="TitleQuote" style={choice}>
+          <h3>
+            <small>$</small>
             {latestPrice}
-          </h1>
-          <br />
-          <p>Change</p>
-          <span>
-            <h1 style={choice}>
-              <small style={choice}>$ </small>
-              {change}
-            </h1>
-            <h1 style={choice}>
-              <small style={choice}>% </small>
-              {(changePercent * 100).toFixed(2)}
-            </h1>
-          </span>
-          <br />
+          </h3>
+          <h3>
+            {(changePercent * 100).toFixed(2)}<small> %</small>
+          </h3>
         </div>
       );
     } else {

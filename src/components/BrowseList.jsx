@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import WatchItem from "./WatchItem";
+import SearchItem from "./SearchItem";
 const ipcr = window.electron.ipcRenderer;
 
 export default class BrowseList extends Component {
@@ -15,6 +15,7 @@ export default class BrowseList extends Component {
     ipcr.send("m/symbols");
     ipcr.on("r/symbols", this.updateList);
   }
+
   search = event => {
     var query = event.target.value.toString().toUpperCase();
     var data = this.state.symbols;
@@ -94,6 +95,7 @@ export default class BrowseList extends Component {
     }
     this.setState({ results });
   };
+
   componentWillUnmount() {
     ipcr.removeListener("r/symbols", this.updateList);
   }
@@ -110,7 +112,7 @@ export default class BrowseList extends Component {
           placeholder="Search symbols..."
         />
         {this.state.results.map((val, i) => {
-          return <WatchItem getWatchItem={this.props.getWatchItem} key={i} name={val} />;
+          return <SearchItem getWatchItem={this.props.getWatchItem} key={i} name={val} />;
         })}
       </div>
     );
