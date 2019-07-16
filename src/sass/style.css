@@ -223,6 +223,20 @@ header {
   font-size: 10px;
 }
 
+.News .Article .Title {
+  font-size: 16px;
+  color: #5697d0;
+}
+
+.News .Article .Description {
+  font-size: 12px;
+}
+
+.News .Article .URL {
+  font-size: 12px;
+  color: #5cb85c;
+}
+
 .Resizer {
   cursor: col-resize;
   width: 5px;
@@ -243,27 +257,43 @@ header {
   height: 100%;
   width: 100%;
   color: white;
+}
+
+.Login .Login-Title {
+  font-size: 64px;
+  font-family: Tahoma;
+  padding: 64px;
+}
+
+.Login .Login-Form {
   text-align: center;
   margin: auto;
 }
 
-.Login * {
-  margin: auto;
-  margin-bottom: 12px;
-  width: 25%;
+.Login .Login-Form #submit {
+  padding: 3px 12px;
+  font-size: 16px;
 }
 
-.Login #spacer {
-  padding-top: 20%;
+.Login .Login-Form .Login-Form-Group {
+  width: 100px;
+  margin: 24px auto;
 }
 
-.Login input {
-  padding: 6px;
-  font-size: 14px;
+.Login .Login-Form .Login-Form-Group label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.Login .Login-Form .Login-Form-Group input {
   border-radius: 5px;
+  font-size: 16px;
+  margin: auto;
+  padding: 3px;
+  display: block;
 }
 
 header {
   text-align: center;
 }
-/*# sourceMappingURL=style.css.map */

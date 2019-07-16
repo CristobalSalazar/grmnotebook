@@ -1,4 +1,4 @@
-module.exports = function () {
+module.exports = function() {
   this.bar = {
     // --- TITLE ---
     title: {
@@ -9,9 +9,9 @@ module.exports = function () {
       offsetY: 0,
       floating: false,
       style: {
-        fontFamily: 'Tahoma',
-        fontSize: '32px',
-        color: '#428bca'
+        fontFamily: "Tahoma",
+        fontSize: "32px",
+        color: "#428bca"
       }
     },
     // --- SUBTITLE ---
@@ -156,18 +156,18 @@ module.exports = function () {
       tickPlacement: "on",
       axisTicks: {
         show: true,
-        borderType: 'solid',
-        color: '#fff',
+        borderType: "solid",
+        color: "#fff",
         height: 3,
         offsetX: 0,
         offsetY: 1
-      },
+      }
     },
     // -- YAXIS ---
     yaxis: {
       show: true,
       labels: {
-        formatter: function (val) {
+        formatter: function(val) {
           if (val) {
             return "$" + val.toFixed(2);
           }

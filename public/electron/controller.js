@@ -1,19 +1,17 @@
-const {
-  ipcMain,
-  shell
-} = require("electron");
+const { ipcMain, shell } = require("electron");
 const fs = require("fs");
 const path = require("path");
-const IEX = require("../../src/IEX");
+const IEX = require("../../src/libs/IEX");
 var watchList = require("../data/WatchList.json");
 const symbolsData = require("../data/Symbols.json");
 
 module.exports = {
-  init: function () {
+  init: function() {
     // --- Debug ---
     ipcMain.on("m/log", (e, message) => {
       console.log(message);
     });
+    // -- React Mounted ---
     ipcMain.on("m/appDidMount", e => {
       console.log("React has mounted");
     });
@@ -44,10 +42,11 @@ module.exports = {
         }
       });
     });
-    // --- Watchlist ---
+    // --- Retrieve Watchlist ---
     ipcMain.on("m/watchList", e => {
       e.sender.webContents.send("r/watchList", watchList);
     });
+    // --- Remove from Watchlist ---
     ipcMain.on("m/watchList/remove", (e, data) => {
       watchList.watchSymbols = watchList.watchSymbols.filter(val => {
         return val !== data;
@@ -64,13 +63,13 @@ module.exports = {
         }
       );
     });
+    // --- Add to Watchlist ---
     ipcMain.on("m/watchList/add", (e, data) => {
       if (watchList.watchSymbols.includes(data)) {
         shell.beep();
         return;
       }
       watchList.watchSymbols.push(data);
-      // Write to disk
       fs.writeFile(
         path.join(__dirname, "../data/WatchList.json"),
         JSON.stringify(watchList),
@@ -82,6 +81,10 @@ module.exports = {
           }
         }
       );
+    });
+    // --- Open In Browser ---
+    ipcMain.on("m/open", (e, data) => {
+      shell.openExternal(data);
     });
   }
 };

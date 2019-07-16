@@ -1,14 +1,10 @@
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
 import "../sass/style.css";
 import Aside from "./Aside";
 import Main from "./Main";
-import IEX from "../IEX";
-import Login from './Login'
-const {
-  ipcRenderer
-} = window.electron;
+import IEX from "../libs/IEX";
+import Login from "./Login";
+const { ipcRenderer } = window.electron;
 
 export default class App extends Component {
   constructor(props) {
@@ -35,24 +31,37 @@ export default class App extends Component {
       profile: profile
     });
   };
+  logout = e => {
+    this.setState({ loggedIn: false });
+  };
+  validateLogin = e => {
+    e.preventDefault();
+    // html elements
+    const usernameElement = document.querySelector("#username");
+    const passwordElement = document.querySelector("#password");
+    // input values
+    const username = usernameElement.value;
+    const password = passwordElement.value;
+    //validate inputs
+    if (username === "admin" && password === "123") {
+      this.setState({ loggedIn: true });
+    } else {
+      usernameElement.value = "";
+      passwordElement.value = "";
+    }
+  };
   render() {
-    const {profile, loggedIn} = this.state
+    const { profile, loggedIn } = this.state;
     return (
-      <div className = "App" >
-        {!loggedIn ? 
-        <div className = "Window" >
-          <Aside 
-            iex = {this.iex}
-            profile = {profile}
-            getWatchItem = {this.getWatchItem}
-            /> 
-          <Main 
-            iex = {this.iex}
-            profile = {profile}
-            />
-        </div> :
-          <Login/>
-        }
+      <div className="App">
+        {!loggedIn ? (
+          <div className="Window">
+            <Aside iex={this.iex} profile={profile} getWatchItem={this.getWatchItem} />
+            <Main iex={this.iex} profile={profile} />
+          </div>
+        ) : (
+          <Login onSubmit={this.validateLogin} />
+        )}
       </div>
     );
   }

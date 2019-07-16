@@ -17,7 +17,7 @@ export default class Quote extends Component {
   }
   getData = () => {
     this.props.iex.stock.quote(this.props.profile).then(data => {
-      console.log('Quote: ');
+      console.log("Quote: ");
       console.log(data);
       this.setState({ data });
     });
@@ -35,8 +35,7 @@ export default class Quote extends Component {
     if (this.state.data) {
       return (
         <div>
-          <p>Latest {latestSource} Price</p>
-
+          <p>LATEST {latestSource ? latestSource.toUpperCase() : "N/A"}</p>
           <h1>
             <small>$ </small>
             {latestPrice}

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import ChartOptions from "../ChartOptions";
+import ChartOptions from "../libs/ChartOptions";
 
 export default class SampleChart2 extends Component {
   state = {

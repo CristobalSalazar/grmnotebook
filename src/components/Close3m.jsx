@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import ChartOptions from "../ChartOptions";
+import ChartOptions from "../libs/ChartOptions";
 
 export default class SampleChart extends Component {
   state = {
@@ -22,10 +22,7 @@ export default class SampleChart extends Component {
   }
   getData() {
     let options = new ChartOptions().bar;
-    let series = [
-      { name: "Close", data: [] },
-
-    ];
+    let series = [{ name: "Close", data: [] }];
     options.grid.xaxis.lines.show = false;
     options.title.text = "Close Price";
     options.subtitle.text = "3 Months";
@@ -35,7 +32,6 @@ export default class SampleChart extends Component {
     this.props.iex.stock.historicalPrices(this.props.profile, "3m").then(data => {
       for (let item of data) {
         series[0].data.push({ x: item.label, y: item.close });
-
       }
       this.setState({ options, series });
     });
@@ -47,7 +43,7 @@ export default class SampleChart extends Component {
         options={this.state.options}
         series={this.state.series}
         type="line"
-        width="1000"
+        width={window.innerWidth / 1.5}
       />
     );
   }

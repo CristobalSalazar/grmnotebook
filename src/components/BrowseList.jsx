@@ -24,7 +24,7 @@ export default class BrowseList extends Component {
     var current = Math.floor((start + end) / 2);
 
     // --- PRE SEARCH EXITS ---
-    if (!query.match(/^[a-zA-Z0-9\-]+$/)) {
+    if (!query.match(/^[a-zA-Z0-9-]+$/)) {
       this.setState({ results: [] });
       return;
     }
