@@ -23,7 +23,7 @@ export default class TitleQuote extends Component {
     });
   };
   showData() {
-    const { changePercent, latestPrice, change, latestSource } = this.state.data;
+    const { changePercent, latestPrice } = this.state.data;
     const pos = { color: "#5cb85c", marginRight: '12px' };
     const neg = { color: "#cc3333", marginRight: '12px' };
     let choice;

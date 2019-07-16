@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-export default class IEX {
+module.exports =  class IEX {
   constructor(token, testMode = false) {
     this.token = token;
     this.baseURL = testMode

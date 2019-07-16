@@ -4,7 +4,7 @@ const { ipcRenderer } = window.electron;
 
 export default class News extends Component {
   state = {
-    source: "Google",
+    source: "IEX",
     articles: []
   };
   componentDidMount() {
@@ -14,6 +14,8 @@ export default class News extends Component {
         break;
       case "IEX":
         this.getIEX();
+        break;
+      default:
         break;
     }
   }
@@ -25,6 +27,8 @@ export default class News extends Component {
           break;
         case "IEX":
           this.getIEX();
+          break;
+        default:
           break;
       }
     }
@@ -63,7 +67,7 @@ export default class News extends Component {
                 <div className="Article" key={i}>
                   <h1 className="Title">{article.title}</h1>
                   <p className="Description">{article.description}</p>
-                  <a className="URL" onClick={e => this.openInBrowser(e, article.url)} href="#">
+                  <a className="URL" onClick={e => this.openInBrowser(e, article.url)} href={article.url}>
                     Read More on {article.source.name}
                   </a>
                 </div>
@@ -80,7 +84,7 @@ export default class News extends Component {
                 <div className="Article" key={i}>
                   <h1 className="Title">{article.headline}</h1>
                   <p className="Description">{article.summary}</p>
-                  <a className="URL" onClick={e => this.openInBrowser(e, article.url)} href="#">
+                  <a className="URL" onClick={e => this.openInBrowser(e, article.url)} href={article.url}>
                     Read More on {article.source}
                   </a>
                 </div>
@@ -88,6 +92,9 @@ export default class News extends Component {
             })}
           </div>
         );
+      default: {
+        return <div></div>
+      }
     }
   }
 }

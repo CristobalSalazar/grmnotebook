@@ -30,7 +30,7 @@ app.on("ready", function() {
   notifications.showNotification("Welcome to Reactron");
   console.log("Electron ready");
   // Add React extension to devtools, once added comment this section out
-  BrowserWindow.addDevToolsExtension(path.join(__dirname, "/../extensions/react3.6.0_0"));
+  // BrowserWindow.addDevToolsExtension(path.join(__dirname, "/../extensions/react3.6.0_0"));
 });
 app.on("window-all-closed", function() {
   if (process.platform !== "darwin") {

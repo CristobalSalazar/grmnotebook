@@ -43,7 +43,7 @@ export default class SampleChart extends Component {
         options={this.state.options}
         series={this.state.series}
         type="line"
-        width={window.innerWidth / 1.5}
+        width='1000'
       />
     );
   }
